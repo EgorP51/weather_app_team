@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:weather_app_team/env/env.dart';
 import 'package:weather_app_team/features/weather/data/api/api_result.dart';
 import 'package:weather_app_team/features/weather/data/models/weather_model.dart';
 
@@ -9,7 +10,7 @@ class WeatherProvider {
   final _dio = Dio(
     BaseOptions(
       queryParameters: {
-        'appid': '1369dd6b5ae78fc9952261ab9aa236b4',
+        'appid': Env.weatherApiKey,
         'units': 'metric',
       },
       baseUrl: 'https://api.openweathermap.org',
