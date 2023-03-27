@@ -31,9 +31,7 @@ class WeatherCard extends StatelessWidget {
               ],
             ),
             body,
-            SizedBox(
-              height: 50,
-            ),
+            SizedBox(height: 50),
             Text(bottomText ?? ''),
           ],
         ),

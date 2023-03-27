@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:weather_app_team/features/weather/presentation/widgets/daily_forecast_row_widget.dart';
 
 class DailyForecastWidget extends StatelessWidget {

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:weather_app_team/features/weather/presentation/constants.dart';
+
 class ChooseCityScreen extends StatelessWidget {
   const ChooseCityScreen({super.key});
 
@@ -30,8 +32,7 @@ class ChooseCityScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 image: const DecorationImage(
-                  image: NetworkImage(
-                      'https://voxukraine.org/wp-content/uploads/2023/03/Depositphotos_188007782_L-1.jpg'),
+                  image: NetworkImage(weatherCardBackgroundImage),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -47,7 +48,7 @@ class ChooseCityScreen extends StatelessWidget {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text(
                             'My location',
                             style: TextStyle(fontSize: 30),
@@ -61,7 +62,7 @@ class ChooseCityScreen extends StatelessWidget {
                       const SizedBox(height: 50),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text('Mostly Cloudy'),
                           Text('H:15° L: 4°'),
                         ],
