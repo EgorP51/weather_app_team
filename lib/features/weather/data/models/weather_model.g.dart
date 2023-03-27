@@ -49,8 +49,8 @@ Map<String, dynamic> _$$_CityToJson(_$_City instance) => <String, dynamic>{
     };
 
 _$_Coord _$$_CoordFromJson(Map<String, dynamic> json) => _$_Coord(
-      lon: json['lon'] as int?,
-      lat: json['lat'] as int?,
+      lon: (json['lon'] as num?)?.toDouble(),
+      lat: (json['lat'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$_CoordToJson(_$_Coord instance) => <String, dynamic>{
@@ -80,6 +80,7 @@ _$_ListElement _$$_ListElementFromJson(Map<String, dynamic> json) =>
       clouds: json['clouds'] as int?,
       pop: (json['pop'] as num?)?.toDouble(),
       rain: (json['rain'] as num?)?.toDouble(),
+      snow: (json['snow'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$_ListElementToJson(_$_ListElement instance) =>
@@ -98,6 +99,7 @@ Map<String, dynamic> _$$_ListElementToJson(_$_ListElement instance) =>
       'clouds': instance.clouds,
       'pop': instance.pop,
       'rain': instance.rain,
+      'snow': instance.snow,
     };
 
 _$_FeelsLike _$$_FeelsLikeFromJson(Map<String, dynamic> json) => _$_FeelsLike(

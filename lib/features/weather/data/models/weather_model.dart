@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 part 'weather_model.freezed.dart';
+
 part 'weather_model.g.dart';
 
 @freezed
@@ -15,7 +15,8 @@ class WeatherModel with _$WeatherModel {
     List<ListElement>? list,
   }) = _WeatherModel;
 
-  factory WeatherModel.fromJson(Map<String, dynamic> json) => _$WeatherModelFromJson(json);
+  factory WeatherModel.fromJson(Map<String, dynamic> json) =>
+      _$WeatherModelFromJson(json);
 }
 
 @freezed
@@ -37,8 +38,8 @@ class City with _$City {
 class Coord with _$Coord {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Coord({
-    int? lon,
-    int? lat,
+    double? lon,
+    double? lat,
   }) = _Coord;
 
   factory Coord.fromJson(Map<String, dynamic> json) => _$CoordFromJson(json);
@@ -62,9 +63,11 @@ class ListElement with _$ListElement {
     int? clouds,
     double? pop,
     double? rain,
+    double? snow,
   }) = _ListElement;
 
-  factory ListElement.fromJson(Map<String, dynamic> json) => _$ListElementFromJson(json);
+  factory ListElement.fromJson(Map<String, dynamic> json) =>
+      _$ListElementFromJson(json);
 }
 
 @freezed
@@ -77,7 +80,8 @@ class FeelsLike with _$FeelsLike {
     double? morn,
   }) = _FeelsLike;
 
-  factory FeelsLike.fromJson(Map<String, dynamic> json) => _$FeelsLikeFromJson(json);
+  factory FeelsLike.fromJson(Map<String, dynamic> json) =>
+      _$FeelsLikeFromJson(json);
 }
 
 @freezed
@@ -105,5 +109,6 @@ class Weather with _$Weather {
     String? icon,
   }) = _Weather;
 
-  factory Weather.fromJson(Map<String, dynamic> json) => _$WeatherFromJson(json);
+  factory Weather.fromJson(Map<String, dynamic> json) =>
+      _$WeatherFromJson(json);
 }
