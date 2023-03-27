@@ -6,7 +6,7 @@ import 'package:weather_app_team/features/weather/data/api/api_result.dart';
 import 'package:weather_app_team/features/weather/data/models/weather_model.dart';
 
 class WeatherProvider {
-  final version = '2.5';
+  final _version = '2.5';
   final _dio = Dio(
     BaseOptions(
       queryParameters: {
@@ -47,7 +47,7 @@ class WeatherProvider {
   }) async {
     try {
       final response = await _dio.get<dynamic>(
-        '/data/$version/forecast/daily',
+        '/data/$_version/forecast/daily',
         queryParameters: queryParameters,
       );
 

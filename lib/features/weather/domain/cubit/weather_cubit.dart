@@ -1,26 +1,31 @@
 import 'package:bloc/bloc.dart';
 import 'package:weather_app_team/core/utils/location_utils.dart';
+import 'package:weather_app_team/features/weather/data/api/api_result.dart';
+import 'package:weather_app_team/features/weather/data/api/weather_provider.dart';
+import 'package:weather_app_team/features/weather/data/models/weather_model.dart';
 import 'package:weather_app_team/features/weather/domain/cubit/weather_state.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
-  WeatherCubit({required dynamic weatherProvider})
+  WeatherCubit({required WeatherProvider weatherProvider})
       : _weatherProvider = weatherProvider,
         super(const WeatherState.initial());
 
-  final dynamic _weatherProvider;
+  final WeatherProvider _weatherProvider;
 
   Future<void> _loadWeatherData(dynamic searchParams) async {
-    var response;
+    late ApiResult<WeatherModel> response;
 
     if (searchParams is String) {
       response = await _weatherProvider.fetchWeatherForecastByCity(
         cityName: searchParams,
       );
-    } else if (searchParams is Map<String, dynamic>) {
+    } else if (searchParams is Map<String, num>) {
       response = await _weatherProvider.fetchWeatherForecastByCoordinates(
-        lat: searchParams['lat'],
-        lon: searchParams['lon'],
+        lat: searchParams['lat']!,
+        lon: searchParams['lon']!,
       );
+    }else{
+      emit(const WeatherState.error());
     }
     response.when(
       data: (data) {
