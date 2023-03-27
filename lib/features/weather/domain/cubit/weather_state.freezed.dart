@@ -20,7 +20,7 @@ mixin _$WeatherState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(dynamic weatherModel) loaded,
+    required TResult Function(WeatherModel weatherModel) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$WeatherState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(dynamic weatherModel)? loaded,
+    TResult? Function(WeatherModel weatherModel)? loaded,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$WeatherState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(dynamic weatherModel)? loaded,
+    TResult Function(WeatherModel weatherModel)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -124,7 +124,7 @@ class _$Initial implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(dynamic weatherModel) loaded,
+    required TResult Function(WeatherModel weatherModel) loaded,
     required TResult Function() error,
   }) {
     return initial();
@@ -135,7 +135,7 @@ class _$Initial implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(dynamic weatherModel)? loaded,
+    TResult? Function(WeatherModel weatherModel)? loaded,
     TResult? Function()? error,
   }) {
     return initial?.call();
@@ -146,7 +146,7 @@ class _$Initial implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(dynamic weatherModel)? loaded,
+    TResult Function(WeatherModel weatherModel)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -236,7 +236,7 @@ class _$Loading implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(dynamic weatherModel) loaded,
+    required TResult Function(WeatherModel weatherModel) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -247,7 +247,7 @@ class _$Loading implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(dynamic weatherModel)? loaded,
+    TResult? Function(WeatherModel weatherModel)? loaded,
     TResult? Function()? error,
   }) {
     return loading?.call();
@@ -258,7 +258,7 @@ class _$Loading implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(dynamic weatherModel)? loaded,
+    TResult Function(WeatherModel weatherModel)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -315,7 +315,9 @@ abstract class _$$LoadedCopyWith<$Res> {
   factory _$$LoadedCopyWith(_$Loaded value, $Res Function(_$Loaded) then) =
       __$$LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({dynamic weatherModel});
+  $Res call({WeatherModel weatherModel});
+
+  $WeatherModelCopyWith<$Res> get weatherModel;
 }
 
 /// @nodoc
@@ -328,14 +330,22 @@ class __$$LoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weatherModel = freezed,
+    Object? weatherModel = null,
   }) {
     return _then(_$Loaded(
-      weatherModel: freezed == weatherModel
+      weatherModel: null == weatherModel
           ? _value.weatherModel
           : weatherModel // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as WeatherModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WeatherModelCopyWith<$Res> get weatherModel {
+    return $WeatherModelCopyWith<$Res>(_value.weatherModel, (value) {
+      return _then(_value.copyWith(weatherModel: value));
+    });
   }
 }
 
@@ -345,7 +355,7 @@ class _$Loaded implements Loaded {
   const _$Loaded({required this.weatherModel});
 
   @override
-  final dynamic weatherModel;
+  final WeatherModel weatherModel;
 
   @override
   String toString() {
@@ -357,13 +367,12 @@ class _$Loaded implements Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Loaded &&
-            const DeepCollectionEquality()
-                .equals(other.weatherModel, weatherModel));
+            (identical(other.weatherModel, weatherModel) ||
+                other.weatherModel == weatherModel));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(weatherModel));
+  int get hashCode => Object.hash(runtimeType, weatherModel);
 
   @JsonKey(ignore: true)
   @override
@@ -376,7 +385,7 @@ class _$Loaded implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(dynamic weatherModel) loaded,
+    required TResult Function(WeatherModel weatherModel) loaded,
     required TResult Function() error,
   }) {
     return loaded(weatherModel);
@@ -387,7 +396,7 @@ class _$Loaded implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(dynamic weatherModel)? loaded,
+    TResult? Function(WeatherModel weatherModel)? loaded,
     TResult? Function()? error,
   }) {
     return loaded?.call(weatherModel);
@@ -398,7 +407,7 @@ class _$Loaded implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(dynamic weatherModel)? loaded,
+    TResult Function(WeatherModel weatherModel)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -447,9 +456,9 @@ class _$Loaded implements Loaded {
 }
 
 abstract class Loaded implements WeatherState {
-  const factory Loaded({required final dynamic weatherModel}) = _$Loaded;
+  const factory Loaded({required final WeatherModel weatherModel}) = _$Loaded;
 
-  dynamic get weatherModel;
+  WeatherModel get weatherModel;
   @JsonKey(ignore: true)
   _$$LoadedCopyWith<_$Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -493,7 +502,7 @@ class _$Error implements Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(dynamic weatherModel) loaded,
+    required TResult Function(WeatherModel weatherModel) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -504,7 +513,7 @@ class _$Error implements Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(dynamic weatherModel)? loaded,
+    TResult? Function(WeatherModel weatherModel)? loaded,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -515,7 +524,7 @@ class _$Error implements Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(dynamic weatherModel)? loaded,
+    TResult Function(WeatherModel weatherModel)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {

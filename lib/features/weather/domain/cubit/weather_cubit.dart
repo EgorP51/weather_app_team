@@ -12,20 +12,28 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   final WeatherProvider _weatherProvider;
 
-  Future<void> _loadWeatherData(dynamic searchParams) async {
+  Future<void> loadWeatherData({String? cityName, required bool isCity}) async {
+    emit(const WeatherState.loading());
     late ApiResult<WeatherModel> response;
 
-    if (searchParams is String) {
+    if (!isCity) {
+      try {
+        final currentPosition = await LocationUtils().getUserLocation();
+        response = await _weatherProvider.fetchWeatherForecastByCoordinates(
+          lat: currentPosition.latitude,
+          lon: currentPosition.longitude,
+        );
+      } catch (e) {
+        emit(const WeatherState.error());
+        return;
+      }
+    } else if (isCity && cityName != null) {
       response = await _weatherProvider.fetchWeatherForecastByCity(
-        cityName: searchParams,
+        cityName: cityName,
       );
-    } else if (searchParams is Map<String, num>) {
-      response = await _weatherProvider.fetchWeatherForecastByCoordinates(
-        lat: searchParams['lat']!,
-        lon: searchParams['lon']!,
-      );
-    }else{
+    } else {
       emit(const WeatherState.error());
+      return;
     }
     response.when(
       data: (data) {
@@ -35,21 +43,5 @@ class WeatherCubit extends Cubit<WeatherState> {
         emit(const WeatherState.error());
       },
     );
-  }
-
-  Future<void> useUserLocation() async {
-    emit(const WeatherState.loading());
-    final locationUtils = LocationUtils();
-    final currentPosition = await locationUtils.getUserLocation();
-
-    await _loadWeatherData({
-      'lat': currentPosition.latitude,
-      'lon': currentPosition.longitude
-    });
-  }
-
-  void useCityName({required String cityName}) {
-    emit(const WeatherState.loading());
-    _loadWeatherData(cityName);
   }
 }
