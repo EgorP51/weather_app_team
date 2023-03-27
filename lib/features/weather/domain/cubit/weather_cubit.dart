@@ -8,12 +8,21 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   final dynamic _weatherProvider;
 
-  Future<void> loadInitialData({required String cityName}) async {
+  Future<void> _loadWeatherData(dynamic searchParams) async {
     emit(const WeatherState.loading());
-    final queryParameters = {'lat': 47.568980, 'long': 33.643315};
 
-    final response = await _weatherProvider.getWeather(queryParameters);
+    var response;
 
+    if (searchParams is String) {
+      response = await _weatherProvider.fetchWeatherForecastByCity(
+        cityName: searchParams,
+      );
+    } else if (searchParams is Map<String, dynamic>) {
+      response = await _weatherProvider.fetchWeatherForecastByCoordinates(
+        lat: searchParams['lat'],
+        lon: searchParams['lon'],
+      );
+    }
     response.when(
       data: (data) {
         emit(WeatherState.loaded(weatherModel: data));
@@ -24,8 +33,16 @@ class WeatherCubit extends Cubit<WeatherState> {
     );
   }
 
-  Map<String, dynamic> getUserLocation() =>
-      {'lat': 47.568980, 'long': 33.643315};
+  void useUserLocation() {
+    final lat = 45.897654;
+    final lon = 53.098765;
 
-  bool isValidCityName({required String cityName}) => true;
+    //TODO: Add utils!
+
+    _loadWeatherData({'lat': lat, 'lon': lon});
+  }
+
+  void useCityName({required String cityName}) {
+    _loadWeatherData(cityName);
+  }
 }
