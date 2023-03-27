@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:weather_app_team/core/utils/location_utils.dart';
 import 'package:weather_app_team/features/weather/domain/cubit/weather_state.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
@@ -9,8 +10,6 @@ class WeatherCubit extends Cubit<WeatherState> {
   final dynamic _weatherProvider;
 
   Future<void> _loadWeatherData(dynamic searchParams) async {
-    emit(const WeatherState.loading());
-
     var response;
 
     if (searchParams is String) {
@@ -33,16 +32,19 @@ class WeatherCubit extends Cubit<WeatherState> {
     );
   }
 
-  void useUserLocation() {
-    final lat = 45.897654;
-    final lon = 53.098765;
+  Future<void> useUserLocation() async {
+    emit(const WeatherState.loading());
+    final locationUtils = LocationUtils();
+    final currentPosition = await locationUtils.getUserLocation();
 
-    //TODO: Add utils!
-
-    _loadWeatherData({'lat': lat, 'lon': lon});
+    await _loadWeatherData({
+      'lat': currentPosition.latitude,
+      'lon': currentPosition.longitude
+    });
   }
 
   void useCityName({required String cityName}) {
+    emit(const WeatherState.loading());
     _loadWeatherData(cityName);
   }
 }
