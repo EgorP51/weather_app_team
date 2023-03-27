@@ -17,6 +17,9 @@ class WeatherCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
       color: Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.all(15),
@@ -31,7 +34,7 @@ class WeatherCard extends StatelessWidget {
               ],
             ),
             body,
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Text(bottomText ?? ''),
           ],
         ),

@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:weather_app_team/features/weather/presentation/constants.dart';
+
 import 'package:weather_app_team/features/weather/presentation/widgets/daily_forecast_widget.dart';
 import 'package:weather_app_team/features/weather/presentation/widgets/hourly_forecast_widget.dart';
 import 'package:weather_app_team/features/weather/presentation/widgets/weather_app_bar.dart';
@@ -15,7 +18,7 @@ class WeatherScreen extends StatelessWidget {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(weatherScreenBackgroundImage),
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         ),
       ),
       child: Scaffold(
@@ -25,11 +28,10 @@ class WeatherScreen extends StatelessWidget {
           child: CustomScrollView(
             slivers: [
               const SliverAppBar(
-                toolbarHeight: 200,
                 backgroundColor: Colors.transparent,
+                toolbarHeight: 250,
                 stretch: true,
-                pinned: true,
-                expandedHeight: 400,
+                expandedHeight: 300,
                 title: WeatherAppBar(),
               ),
               SliverList(
