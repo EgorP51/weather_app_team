@@ -24,6 +24,8 @@ class WeatherCubit extends Cubit<WeatherState> {
         lat: searchParams['lat']!,
         lon: searchParams['lon']!,
       );
+    }else{
+      emit(const WeatherState.error());
     }
     response.when(
       data: (data) {
