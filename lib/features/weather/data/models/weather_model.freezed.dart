@@ -519,8 +519,8 @@ Coord _$CoordFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Coord {
-  int? get lon => throw _privateConstructorUsedError;
-  int? get lat => throw _privateConstructorUsedError;
+  double? get lon => throw _privateConstructorUsedError;
+  double? get lat => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -532,7 +532,7 @@ abstract class $CoordCopyWith<$Res> {
   factory $CoordCopyWith(Coord value, $Res Function(Coord) then) =
       _$CoordCopyWithImpl<$Res, Coord>;
   @useResult
-  $Res call({int? lon, int? lat});
+  $Res call({double? lon, double? lat});
 }
 
 /// @nodoc
@@ -555,11 +555,11 @@ class _$CoordCopyWithImpl<$Res, $Val extends Coord>
       lon: freezed == lon
           ? _value.lon
           : lon // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       lat: freezed == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
     ) as $Val);
   }
 }
@@ -570,7 +570,7 @@ abstract class _$$_CoordCopyWith<$Res> implements $CoordCopyWith<$Res> {
       __$$_CoordCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? lon, int? lat});
+  $Res call({double? lon, double? lat});
 }
 
 /// @nodoc
@@ -589,11 +589,11 @@ class __$$_CoordCopyWithImpl<$Res> extends _$CoordCopyWithImpl<$Res, _$_Coord>
       lon: freezed == lon
           ? _value.lon
           : lon // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       lat: freezed == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
     ));
   }
 }
@@ -608,9 +608,9 @@ class _$_Coord implements _Coord {
       _$$_CoordFromJson(json);
 
   @override
-  final int? lon;
+  final double? lon;
   @override
-  final int? lat;
+  final double? lat;
 
   @override
   String toString() {
@@ -645,14 +645,14 @@ class _$_Coord implements _Coord {
 }
 
 abstract class _Coord implements Coord {
-  const factory _Coord({final int? lon, final int? lat}) = _$_Coord;
+  const factory _Coord({final double? lon, final double? lat}) = _$_Coord;
 
   factory _Coord.fromJson(Map<String, dynamic> json) = _$_Coord.fromJson;
 
   @override
-  int? get lon;
+  double? get lon;
   @override
-  int? get lat;
+  double? get lat;
   @override
   @JsonKey(ignore: true)
   _$$_CoordCopyWith<_$_Coord> get copyWith =>
@@ -679,6 +679,7 @@ mixin _$ListElement {
   int? get clouds => throw _privateConstructorUsedError;
   double? get pop => throw _privateConstructorUsedError;
   double? get rain => throw _privateConstructorUsedError;
+  double? get snow => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -706,7 +707,8 @@ abstract class $ListElementCopyWith<$Res> {
       double? gust,
       int? clouds,
       double? pop,
-      double? rain});
+      double? rain,
+      double? snow});
 
   $TempCopyWith<$Res>? get temp;
   $FeelsLikeCopyWith<$Res>? get feelsLike;
@@ -739,6 +741,7 @@ class _$ListElementCopyWithImpl<$Res, $Val extends ListElement>
     Object? clouds = freezed,
     Object? pop = freezed,
     Object? rain = freezed,
+    Object? snow = freezed,
   }) {
     return _then(_value.copyWith(
       dt: freezed == dt
@@ -797,6 +800,10 @@ class _$ListElementCopyWithImpl<$Res, $Val extends ListElement>
           ? _value.rain
           : rain // ignore: cast_nullable_to_non_nullable
               as double?,
+      snow: freezed == snow
+          ? _value.snow
+          : snow // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 
@@ -847,7 +854,8 @@ abstract class _$$_ListElementCopyWith<$Res>
       double? gust,
       int? clouds,
       double? pop,
-      double? rain});
+      double? rain,
+      double? snow});
 
   @override
   $TempCopyWith<$Res>? get temp;
@@ -880,6 +888,7 @@ class __$$_ListElementCopyWithImpl<$Res>
     Object? clouds = freezed,
     Object? pop = freezed,
     Object? rain = freezed,
+    Object? snow = freezed,
   }) {
     return _then(_$_ListElement(
       dt: freezed == dt
@@ -938,6 +947,10 @@ class __$$_ListElementCopyWithImpl<$Res>
           ? _value.rain
           : rain // ignore: cast_nullable_to_non_nullable
               as double?,
+      snow: freezed == snow
+          ? _value.snow
+          : snow // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -960,7 +973,8 @@ class _$_ListElement implements _ListElement {
       this.gust,
       this.clouds,
       this.pop,
-      this.rain})
+      this.rain,
+      this.snow})
       : _weather = weather;
 
   factory _$_ListElement.fromJson(Map<String, dynamic> json) =>
@@ -1002,10 +1016,12 @@ class _$_ListElement implements _ListElement {
   final double? pop;
   @override
   final double? rain;
+  @override
+  final double? snow;
 
   @override
   String toString() {
-    return 'ListElement(dt: $dt, sunrise: $sunrise, sunset: $sunset, temp: $temp, feelsLike: $feelsLike, pressure: $pressure, humidity: $humidity, weather: $weather, speed: $speed, deg: $deg, gust: $gust, clouds: $clouds, pop: $pop, rain: $rain)';
+    return 'ListElement(dt: $dt, sunrise: $sunrise, sunset: $sunset, temp: $temp, feelsLike: $feelsLike, pressure: $pressure, humidity: $humidity, weather: $weather, speed: $speed, deg: $deg, gust: $gust, clouds: $clouds, pop: $pop, rain: $rain, snow: $snow)';
   }
 
   @override
@@ -1029,7 +1045,8 @@ class _$_ListElement implements _ListElement {
             (identical(other.gust, gust) || other.gust == gust) &&
             (identical(other.clouds, clouds) || other.clouds == clouds) &&
             (identical(other.pop, pop) || other.pop == pop) &&
-            (identical(other.rain, rain) || other.rain == rain));
+            (identical(other.rain, rain) || other.rain == rain) &&
+            (identical(other.snow, snow) || other.snow == snow));
   }
 
   @JsonKey(ignore: true)
@@ -1049,7 +1066,8 @@ class _$_ListElement implements _ListElement {
       gust,
       clouds,
       pop,
-      rain);
+      rain,
+      snow);
 
   @JsonKey(ignore: true)
   @override
@@ -1080,7 +1098,8 @@ abstract class _ListElement implements ListElement {
       final double? gust,
       final int? clouds,
       final double? pop,
-      final double? rain}) = _$_ListElement;
+      final double? rain,
+      final double? snow}) = _$_ListElement;
 
   factory _ListElement.fromJson(Map<String, dynamic> json) =
       _$_ListElement.fromJson;
@@ -1113,6 +1132,8 @@ abstract class _ListElement implements ListElement {
   double? get pop;
   @override
   double? get rain;
+  @override
+  double? get snow;
   @override
   @JsonKey(ignore: true)
   _$$_ListElementCopyWith<_$_ListElement> get copyWith =>
