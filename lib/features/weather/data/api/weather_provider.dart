@@ -50,11 +50,15 @@ class WeatherProvider {
         '/data/$_version/forecast/daily',
         queryParameters: queryParameters,
       );
+      final data = response.data;
 
       if (response.statusCode != HttpStatus.ok) {
+        if (data is Map) {
+          final error = data['message'].toString();
+          return ApiResult.error(error);
+        }
         return const ApiResult.error();
       }
-      final data = response.data;
 
       if (data is Map<String, dynamic>) {
         final weather = WeatherModel.fromJson(data);
