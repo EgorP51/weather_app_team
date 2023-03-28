@@ -12,7 +12,7 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   final WeatherProvider _weatherProvider;
 
-  Future<void> _loadWeatherData(dynamic searchParams) async {
+  Future<void> _loadWeatherData<T>(T searchParams) async {
     late ApiResult<WeatherModel> response;
 
     if (searchParams is String) {
@@ -39,16 +39,21 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   Future<void> useUserLocation() async {
     emit(const WeatherState.loading());
-    final locationUtils = LocationUtils();
-    final currentPosition = await locationUtils.getUserLocation();
 
-    await _loadWeatherData({
-      'lat': currentPosition.latitude,
-      'lon': currentPosition.longitude
-    });
+    try{
+      final locationUtils = LocationUtils();
+      final currentPosition = await locationUtils.getUserLocation();
+
+      await _loadWeatherData<Map<String,num>>({
+        'lat': currentPosition.latitude,
+        'lon': currentPosition.longitude
+      });
+    }catch(e){
+      emit(const WeatherState.permissionsDenied());
+    }
   }
 
-  void useCityName({required String cityName}) {
+  void useCityName<String>({required String cityName}) {
     emit(const WeatherState.loading());
     _loadWeatherData(cityName);
   }
