@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:weather_app_team/core/utils/location_utils.dart';
 import 'package:weather_app_team/features/weather/data/api/api_result.dart';
 import 'package:weather_app_team/features/weather/data/api/weather_provider.dart';
@@ -12,22 +13,38 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   final WeatherProvider _weatherProvider;
 
-  Future<void> _loadWeatherData(dynamic searchParams) async {
-    late ApiResult<WeatherModel> response;
+  Future<void> useUserLocation() async {
+    emit(const WeatherState.loading());
 
-    if (searchParams is String) {
-      response = await _weatherProvider.fetchWeatherForecastByCity(
-        cityName: searchParams,
-      );
-    } else if (searchParams is Map<String, num>) {
-      response = await _weatherProvider.fetchWeatherForecastByCoordinates(
-        lat: searchParams['lat']!,
-        lon: searchParams['lon']!,
-      );
-    }else{
-      emit(const WeatherState.error());
+    final locationUtils = LocationUtils();
+    late final Position currentPosition;
+
+    try {
+      currentPosition = await locationUtils.getUserLocation();
+    } catch (e) {
+      emit(const WeatherState.permissionsDenied());
     }
-    response.when(
+
+    final response = await _weatherProvider.fetchWeatherForecastByCoordinates(
+      lat: currentPosition.latitude,
+      lon: currentPosition.latitude,
+    );
+
+    _loadWeatherData(response);
+  }
+
+  Future<void> useCityName({required String cityName}) async {
+    emit(const WeatherState.loading());
+
+    final result = await _weatherProvider.fetchWeatherForecastByCity(
+      cityName: cityName,
+    );
+
+    _loadWeatherData(result);
+  }
+
+  void _loadWeatherData(ApiResult<WeatherModel> result) {
+    result.when(
       data: (data) {
         emit(WeatherState.loaded(weatherModel: data));
       },
@@ -35,21 +52,5 @@ class WeatherCubit extends Cubit<WeatherState> {
         emit(const WeatherState.error());
       },
     );
-  }
-
-  Future<void> useUserLocation() async {
-    emit(const WeatherState.loading());
-    final locationUtils = LocationUtils();
-    final currentPosition = await locationUtils.getUserLocation();
-
-    await _loadWeatherData({
-      'lat': currentPosition.latitude,
-      'lon': currentPosition.longitude
-    });
-  }
-
-  void useCityName({required String cityName}) {
-    emit(const WeatherState.loading());
-    _loadWeatherData(cityName);
   }
 }

@@ -20,24 +20,27 @@ mixin _$WeatherState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(dynamic weatherModel) loaded,
+    required TResult Function(WeatherModel weatherModel) loaded,
     required TResult Function() error,
+    required TResult Function() permissionsDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(dynamic weatherModel)? loaded,
+    TResult? Function(WeatherModel weatherModel)? loaded,
     TResult? Function()? error,
+    TResult? Function()? permissionsDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(dynamic weatherModel)? loaded,
+    TResult Function(WeatherModel weatherModel)? loaded,
     TResult Function()? error,
+    TResult Function()? permissionsDenied,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$WeatherState {
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Error value) error,
+    required TResult Function(PermissionsDenied value) permissionsDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$WeatherState {
     TResult? Function(Loading value)? loading,
     TResult? Function(Loaded value)? loaded,
     TResult? Function(Error value)? error,
+    TResult? Function(PermissionsDenied value)? permissionsDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$WeatherState {
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Error value)? error,
+    TResult Function(PermissionsDenied value)? permissionsDenied,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,8 +130,9 @@ class _$Initial implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(dynamic weatherModel) loaded,
+    required TResult Function(WeatherModel weatherModel) loaded,
     required TResult Function() error,
+    required TResult Function() permissionsDenied,
   }) {
     return initial();
   }
@@ -135,8 +142,9 @@ class _$Initial implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(dynamic weatherModel)? loaded,
+    TResult? Function(WeatherModel weatherModel)? loaded,
     TResult? Function()? error,
+    TResult? Function()? permissionsDenied,
   }) {
     return initial?.call();
   }
@@ -146,8 +154,9 @@ class _$Initial implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(dynamic weatherModel)? loaded,
+    TResult Function(WeatherModel weatherModel)? loaded,
     TResult Function()? error,
+    TResult Function()? permissionsDenied,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -163,6 +172,7 @@ class _$Initial implements Initial {
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Error value) error,
+    required TResult Function(PermissionsDenied value) permissionsDenied,
   }) {
     return initial(this);
   }
@@ -174,6 +184,7 @@ class _$Initial implements Initial {
     TResult? Function(Loading value)? loading,
     TResult? Function(Loaded value)? loaded,
     TResult? Function(Error value)? error,
+    TResult? Function(PermissionsDenied value)? permissionsDenied,
   }) {
     return initial?.call(this);
   }
@@ -185,6 +196,7 @@ class _$Initial implements Initial {
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Error value)? error,
+    TResult Function(PermissionsDenied value)? permissionsDenied,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -236,8 +248,9 @@ class _$Loading implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(dynamic weatherModel) loaded,
+    required TResult Function(WeatherModel weatherModel) loaded,
     required TResult Function() error,
+    required TResult Function() permissionsDenied,
   }) {
     return loading();
   }
@@ -247,8 +260,9 @@ class _$Loading implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(dynamic weatherModel)? loaded,
+    TResult? Function(WeatherModel weatherModel)? loaded,
     TResult? Function()? error,
+    TResult? Function()? permissionsDenied,
   }) {
     return loading?.call();
   }
@@ -258,8 +272,9 @@ class _$Loading implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(dynamic weatherModel)? loaded,
+    TResult Function(WeatherModel weatherModel)? loaded,
     TResult Function()? error,
+    TResult Function()? permissionsDenied,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -275,6 +290,7 @@ class _$Loading implements Loading {
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Error value) error,
+    required TResult Function(PermissionsDenied value) permissionsDenied,
   }) {
     return loading(this);
   }
@@ -286,6 +302,7 @@ class _$Loading implements Loading {
     TResult? Function(Loading value)? loading,
     TResult? Function(Loaded value)? loaded,
     TResult? Function(Error value)? error,
+    TResult? Function(PermissionsDenied value)? permissionsDenied,
   }) {
     return loading?.call(this);
   }
@@ -297,6 +314,7 @@ class _$Loading implements Loading {
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Error value)? error,
+    TResult Function(PermissionsDenied value)? permissionsDenied,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -315,7 +333,9 @@ abstract class _$$LoadedCopyWith<$Res> {
   factory _$$LoadedCopyWith(_$Loaded value, $Res Function(_$Loaded) then) =
       __$$LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({dynamic weatherModel});
+  $Res call({WeatherModel weatherModel});
+
+  $WeatherModelCopyWith<$Res> get weatherModel;
 }
 
 /// @nodoc
@@ -328,14 +348,22 @@ class __$$LoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weatherModel = freezed,
+    Object? weatherModel = null,
   }) {
     return _then(_$Loaded(
-      weatherModel: freezed == weatherModel
+      weatherModel: null == weatherModel
           ? _value.weatherModel
           : weatherModel // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as WeatherModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WeatherModelCopyWith<$Res> get weatherModel {
+    return $WeatherModelCopyWith<$Res>(_value.weatherModel, (value) {
+      return _then(_value.copyWith(weatherModel: value));
+    });
   }
 }
 
@@ -345,7 +373,7 @@ class _$Loaded implements Loaded {
   const _$Loaded({required this.weatherModel});
 
   @override
-  final dynamic weatherModel;
+  final WeatherModel weatherModel;
 
   @override
   String toString() {
@@ -357,13 +385,12 @@ class _$Loaded implements Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Loaded &&
-            const DeepCollectionEquality()
-                .equals(other.weatherModel, weatherModel));
+            (identical(other.weatherModel, weatherModel) ||
+                other.weatherModel == weatherModel));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(weatherModel));
+  int get hashCode => Object.hash(runtimeType, weatherModel);
 
   @JsonKey(ignore: true)
   @override
@@ -376,8 +403,9 @@ class _$Loaded implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(dynamic weatherModel) loaded,
+    required TResult Function(WeatherModel weatherModel) loaded,
     required TResult Function() error,
+    required TResult Function() permissionsDenied,
   }) {
     return loaded(weatherModel);
   }
@@ -387,8 +415,9 @@ class _$Loaded implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(dynamic weatherModel)? loaded,
+    TResult? Function(WeatherModel weatherModel)? loaded,
     TResult? Function()? error,
+    TResult? Function()? permissionsDenied,
   }) {
     return loaded?.call(weatherModel);
   }
@@ -398,8 +427,9 @@ class _$Loaded implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(dynamic weatherModel)? loaded,
+    TResult Function(WeatherModel weatherModel)? loaded,
     TResult Function()? error,
+    TResult Function()? permissionsDenied,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -415,6 +445,7 @@ class _$Loaded implements Loaded {
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Error value) error,
+    required TResult Function(PermissionsDenied value) permissionsDenied,
   }) {
     return loaded(this);
   }
@@ -426,6 +457,7 @@ class _$Loaded implements Loaded {
     TResult? Function(Loading value)? loading,
     TResult? Function(Loaded value)? loaded,
     TResult? Function(Error value)? error,
+    TResult? Function(PermissionsDenied value)? permissionsDenied,
   }) {
     return loaded?.call(this);
   }
@@ -437,6 +469,7 @@ class _$Loaded implements Loaded {
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Error value)? error,
+    TResult Function(PermissionsDenied value)? permissionsDenied,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -447,9 +480,9 @@ class _$Loaded implements Loaded {
 }
 
 abstract class Loaded implements WeatherState {
-  const factory Loaded({required final dynamic weatherModel}) = _$Loaded;
+  const factory Loaded({required final WeatherModel weatherModel}) = _$Loaded;
 
-  dynamic get weatherModel;
+  WeatherModel get weatherModel;
   @JsonKey(ignore: true)
   _$$LoadedCopyWith<_$Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -493,8 +526,9 @@ class _$Error implements Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(dynamic weatherModel) loaded,
+    required TResult Function(WeatherModel weatherModel) loaded,
     required TResult Function() error,
+    required TResult Function() permissionsDenied,
   }) {
     return error();
   }
@@ -504,8 +538,9 @@ class _$Error implements Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(dynamic weatherModel)? loaded,
+    TResult? Function(WeatherModel weatherModel)? loaded,
     TResult? Function()? error,
+    TResult? Function()? permissionsDenied,
   }) {
     return error?.call();
   }
@@ -515,8 +550,9 @@ class _$Error implements Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(dynamic weatherModel)? loaded,
+    TResult Function(WeatherModel weatherModel)? loaded,
     TResult Function()? error,
+    TResult Function()? permissionsDenied,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -532,6 +568,7 @@ class _$Error implements Error {
     required TResult Function(Loading value) loading,
     required TResult Function(Loaded value) loaded,
     required TResult Function(Error value) error,
+    required TResult Function(PermissionsDenied value) permissionsDenied,
   }) {
     return error(this);
   }
@@ -543,6 +580,7 @@ class _$Error implements Error {
     TResult? Function(Loading value)? loading,
     TResult? Function(Loaded value)? loaded,
     TResult? Function(Error value)? error,
+    TResult? Function(PermissionsDenied value)? permissionsDenied,
   }) {
     return error?.call(this);
   }
@@ -554,6 +592,7 @@ class _$Error implements Error {
     TResult Function(Loading value)? loading,
     TResult Function(Loaded value)? loaded,
     TResult Function(Error value)? error,
+    TResult Function(PermissionsDenied value)? permissionsDenied,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -565,4 +604,124 @@ class _$Error implements Error {
 
 abstract class Error implements WeatherState {
   const factory Error() = _$Error;
+}
+
+/// @nodoc
+abstract class _$$PermissionsDeniedCopyWith<$Res> {
+  factory _$$PermissionsDeniedCopyWith(
+          _$PermissionsDenied value, $Res Function(_$PermissionsDenied) then) =
+      __$$PermissionsDeniedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PermissionsDeniedCopyWithImpl<$Res>
+    extends _$WeatherStateCopyWithImpl<$Res, _$PermissionsDenied>
+    implements _$$PermissionsDeniedCopyWith<$Res> {
+  __$$PermissionsDeniedCopyWithImpl(
+      _$PermissionsDenied _value, $Res Function(_$PermissionsDenied) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PermissionsDenied implements PermissionsDenied {
+  const _$PermissionsDenied();
+
+  @override
+  String toString() {
+    return 'WeatherState.permissionsDenied()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PermissionsDenied);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(WeatherModel weatherModel) loaded,
+    required TResult Function() error,
+    required TResult Function() permissionsDenied,
+  }) {
+    return permissionsDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(WeatherModel weatherModel)? loaded,
+    TResult? Function()? error,
+    TResult? Function()? permissionsDenied,
+  }) {
+    return permissionsDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(WeatherModel weatherModel)? loaded,
+    TResult Function()? error,
+    TResult Function()? permissionsDenied,
+    required TResult orElse(),
+  }) {
+    if (permissionsDenied != null) {
+      return permissionsDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(Error value) error,
+    required TResult Function(PermissionsDenied value) permissionsDenied,
+  }) {
+    return permissionsDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(Error value)? error,
+    TResult? Function(PermissionsDenied value)? permissionsDenied,
+  }) {
+    return permissionsDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(Error value)? error,
+    TResult Function(PermissionsDenied value)? permissionsDenied,
+    required TResult orElse(),
+  }) {
+    if (permissionsDenied != null) {
+      return permissionsDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PermissionsDenied implements WeatherState {
+  const factory PermissionsDenied() = _$PermissionsDenied;
 }

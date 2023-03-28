@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:weather_app_team/features/weather/data/models/weather_model.dart';
+import 'package:weather_app_team/features/weather/presentation/screens/weather_forecast_page.dart';
 import 'package:weather_app_team/features/weather/presentation/screens/weather_screen.dart';
 
 class App extends StatelessWidget {
@@ -14,7 +15,7 @@ class App extends StatelessWidget {
     ]);
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: const WeatherScreen(),
+      home: const WeatherForecastPage(),
     );
   }
 }

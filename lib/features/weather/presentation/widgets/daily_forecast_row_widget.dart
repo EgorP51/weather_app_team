@@ -10,16 +10,16 @@ class DailyForecastRowWidget extends StatelessWidget {
   });
 
   final String dayOfWeek;
-  final IconData icon;
-  final int temperatureMin;
-  final int temperatureMax;
+  final String icon;
+  final String temperatureMin;
+  final String temperatureMax;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: Text(dayOfWeek)),
-        Expanded(child: Icon(icon)),
+        Expanded(child: Text(dayOfWeek.toString())),
+        Expanded(child: Text(icon)),
         Expanded(child: Text('$temperatureMin-----$temperatureMax')),
       ],
     );
