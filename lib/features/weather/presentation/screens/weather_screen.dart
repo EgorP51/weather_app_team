@@ -12,18 +12,20 @@ import 'package:weather_app_team/features/weather/presentation/widgets/weather_a
 import 'package:weather_app_team/features/weather/presentation/widgets/weather_cards_column_widget.dart';
 
 class WeatherScreen extends StatelessWidget {
-
-  const WeatherScreen({required this.weatherModel,super.key});
+  const WeatherScreen({required this.weatherModel, super.key});
   final WeatherModel weatherModel;
-
 
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(weatherScreenBackgroundImage),
-          fit: BoxFit.fill,
+        gradient: LinearGradient(
+          colors: [
+            Colors.red,
+            Colors.deepPurple,
+          ],
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
         ),
       ),
       child: Scaffold(
@@ -32,20 +34,24 @@ class WeatherScreen extends StatelessWidget {
           bottom: false,
           child: CustomScrollView(
             slivers: [
-              const SliverAppBar(
+              SliverAppBar(
                 backgroundColor: Colors.transparent,
                 toolbarHeight: 250,
                 stretch: true,
                 expandedHeight: 300,
-                title: WeatherAppBar(),
+                title: WeatherAppBar(
+                  cityName: weatherModel.city!.name!,
+                  weatherModelForToday: weatherModel.list!.first,
+                ),
               ),
               SliverList(
                 delegate: SliverChildListDelegate(
                   [
-                    const HourlyForecastWidget(),
-                    const DailyForecastWidget(),
-                    const SizedBox(height: 10),
-                    const WeatherCardsColumnWidget(),
+                    DailyForecastWidget(
+                      weatherModel: weatherModel,
+                    ),
+                    WeatherCardsColumnWidget(
+                        weatherModelForToday: weatherModel.list!.first),
                   ],
                 ),
               ),

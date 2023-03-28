@@ -11,6 +11,22 @@ const weatherCardBodyTextStyle = TextStyle(
   fontSize: 50,
 );
 
+const minMaxTemparatureAppBarTextStyle = TextStyle(
+  fontSize: 20,
+);
+
+const cityNameTextStyle = TextStyle(
+  fontSize: 40,
+);
+
+const temperatureAppBarTextStyle = TextStyle(
+  fontSize: 80,
+);
+
+const weatherDescriptionAppBarTextStyle = TextStyle(
+  fontSize: 30,
+);
+
 const String weatherCardBackgroundImage =
     'https://voxukraine.org/wp-content/uploads/2023/03/Depositphotos_188007782_L-1.jpg';
 

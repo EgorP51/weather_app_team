@@ -6,7 +6,7 @@ import 'package:weather_app_team/features/weather/domain/cubit/weather_cubit.dar
 import 'package:weather_app_team/features/weather/presentation/screens/choose_city_screen.dart';
 
 class WeatherForecastPage extends StatelessWidget {
-  const WeatherForecastPage({Key? key}) : super(key: key);
+  const WeatherForecastPage({super.key});
 
   @override
   Widget build(BuildContext context) {

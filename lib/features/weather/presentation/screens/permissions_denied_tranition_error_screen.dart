@@ -20,27 +20,32 @@ class PermissionsDeniedTranitionErrorScreen extends StatelessWidget {
             children: [
               FlutterLogo(size: 350),
               Text('ERRRRRRROOOOOOЛоооХХХХOORRRRRRRRRRRRRRRRRRRR'),
-              Text('ТТТТТТТТТТТТТУУУУУУУУУУУУУТТТТТТТТТТ ПППррррррЯЯЯЯЯЯЯЯЯиммммммм ОШШШШииииииББкАААААаа'),
+              Text(
+                  'ТТТТТТТТТТТТТУУУУУУУУУУУУУТТТТТТТТТТ ПППррррррЯЯЯЯЯЯЯЯЯиммммммм ОШШШШииииииББкАААААаа'),
               Row(
                 children: [
                   Text('ERRRrOOOr'),
-                  ElevatedButton(onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => WeatherForecastPage(),));
-                  }, child: Text('ErrrooooRRRRRЫЫЫЫ')),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => WeatherForecastPage(),
+                        ));
+                      },
+                      child: Text('ErrrooooRRRRRЫЫЫЫ')),
                   Text('ERRrROOOOr')
                 ],
               ),
               Row(
                 children: [
                   Text('ErOr'),
-                  ElevatedButton(onPressed: () {
-
-                  }, child: Text('ЬуьуьуььуьуьЬ')),
+                  ElevatedButton(
+                      onPressed: () {}, child: Text('ЬуьуьуььуьуьЬ')),
                   Text('ERRRRrROOr'),
                 ],
               ),
               Text('ERRRRRRROOOOOOЛоооХХХХOORRRRRRRRRRRRRRRRRRRR'),
-              Text('ТТТТТТТТТТТТТУУУУУУУУУУУУУТТТТТТТТТТ ПППррррррЯЯЯЯЯЯЯЯЯиммммммм ОШШШШииииииББкАААААаа'),
+              Text(
+                  'ТТТТТТТТТТТТТУУУУУУУУУУУУУТТТТТТТТТТ ПППррррррЯЯЯЯЯЯЯЯЯиммммммм ОШШШШииииииББкАААААаа'),
             ],
           ),
         ),

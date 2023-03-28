@@ -16,13 +16,18 @@ class ChooseCityScreen extends StatelessWidget {
     return BlocBuilder<WeatherCubit, WeatherState>(
       builder: (context, state) {
         return state.map(
-            initial: (value) => const _Body(),
-            loading: (value) => const Center(child: CircularProgressIndicator(backgroundColor: Colors.green),),
-            loaded: (value) => WeatherScreen(weatherModel: value.weatherModel),
-            error: (value) => const Scaffold(backgroundColor: Colors.redAccent,),
-          permissionsDenied: (value) => const PermissionsDeniedTranitionErrorScreen(),
+          initial: (value) => const _Body(),
+          loading: (value) => const Center(
+            child: CircularProgressIndicator(backgroundColor: Colors.green),
+          ),
+          loaded: (value) => WeatherScreen(weatherModel: value.weatherModel),
+          error: (value) => const Scaffold(
+            backgroundColor: Colors.redAccent,
+          ),
+          permissionsDenied: (value) =>
+              const PermissionsDeniedTranitionErrorScreen(),
         );
-    },
+      },
     );
   }
 }
@@ -46,8 +51,10 @@ class _Body extends StatelessWidget {
             ),
             CupertinoTextField(
               prefix: IconButton(
-                onPressed: (){
-                  context.read<WeatherCubit>().useCityName(cityName: 'sdoivhasdiuvgaifuv');
+                onPressed: () {
+                  context
+                      .read<WeatherCubit>()
+                      .useCityName(cityName: 'sdoivhasdiuvgaifuv');
                 },
                 icon: const Icon(Icons.search),
               ),
@@ -86,7 +93,7 @@ class LocationItemCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: InkWell(
-        onTap: (){
+        onTap: () {
           context.read<WeatherCubit>().useUserLocation();
         },
         child: Padding(
@@ -121,4 +128,3 @@ class LocationItemCard extends StatelessWidget {
     );
   }
 }
-
