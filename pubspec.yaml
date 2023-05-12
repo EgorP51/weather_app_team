@@ -9,7 +9,7 @@ environment:
 dependencies:
   geolocator: ^9.0.2
   build_runner: ^2.3.3
-  freezed: ^2.3.2
+  freezed: ^2.3.3
   bloc: ^8.1.1
   dio: ^5.0.3
   envied: ^0.3.0
